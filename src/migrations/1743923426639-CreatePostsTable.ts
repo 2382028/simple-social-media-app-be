@@ -9,7 +9,7 @@ export class CreatePostsTable1743923426639 implements MigrationInterface {
               title VARCHAR(255) NOT NULL,
               content TEXT,
               image_url TEXT,
-              created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+              created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP, 
               updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 
               CONSTRAINT fk_user
