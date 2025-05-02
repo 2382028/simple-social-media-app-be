@@ -19,13 +19,18 @@ export class AuthService {
   ) {}
 
   async signIn(email: string, password: string) {
-    const user: User | null = await this.userService.findByEmail(email);
+    console.log('--- AuthService signIn CALLED ---' ); // <<< Log ditambahkan
+    console.log('Attempting to find user by email:', email); // <<< Log ditambahkan
+    const user: User | null = await this.userService.findByEmail(email); // <<< Panggilan ke UserService
+    console.log('User found by email:', user); // <<< Log ditambahkan
+
     if (
       user == null ||
       email != user.email ||
       !bcrypt.compareSync(password, user?.password_hash)
     ) {
-      throw new UnauthorizedException();
+      console.error(`User with email ${email} not found or password mismatch!` ); // <<< Log error ditambahkan (disesuaikan sedikit)
+      throw new UnauthorizedException('Invalid credentials'); // <<< Disesuaikan dari contoh Anda
     }
     const payload: JwtPayloadDto = { sub: user.id, email: user.email };
     return {

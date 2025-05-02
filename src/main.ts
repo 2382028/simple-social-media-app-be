@@ -53,7 +53,7 @@ async function bootstrap() {
   );
 
   // Menjalankan aplikasi di port dari environment variable PORT atau default ke 3000
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 5432;
   await app.listen(port);
 
   // Menampilkan log di konsol saat server berhasil berjalan
